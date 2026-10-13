@@ -29,10 +29,10 @@ function acuityUrl(typeKey) {
   doc.classList.add('js');
 
   /* ---------- Review mode: ?review=1 shows section tags (kept for the session); ?review=0 turns it off ---------- */
-  var review = /[?&]review=1/.test(location.search);
+  var review = /[?&]review=1/.test(location.search);
   try {
     if (review) sessionStorage.setItem('mabReview', '1');
-    else if (/[?&]review=0/.test(location.search)) sessionStorage.removeItem('mabReview');
+    else if (/[?&]review=0/.test(location.search)) sessionStorage.removeItem('mabReview');
     else review = sessionStorage.getItem('mabReview') === '1';
   } catch (e) {}
   if (review) {
