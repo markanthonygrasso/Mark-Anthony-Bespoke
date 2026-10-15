@@ -4,11 +4,11 @@ Static site for Mark Anthony Bespoke, 528 Chapel St, Unit A, New Haven CT.
 Plain HTML, CSS and JavaScript. No build step, no server, no dependencies, no secrets.
 
 ```
-index.html               Home
-craft/index.html         The Craft — what bespoke means here, the commission timeline
-commissions/index.html   What can be commissioned; cloth; price (TK)
-book/index.html          Scheduling (Acuity embed)
-visit/index.html         The rooms, location, what to expect on arrival
+index.html                       Home
+bespoke-experience/index.html    What bespoke means here, the process (I–V), house style, Mark
+tailoring/index.html             What we craft; formal attire; cloth; price ("from" prices TK)
+weddings/index.html              Wedding suits: why bespoke, timing, process
+book/index.html                  Scheduling (Acuity embed), what to expect, address + map
 assets/css/site.css      All styles. Colour and type tokens at the top.
 assets/js/site.js        Menu, carousel, scroll reveals, Acuity config + embed
 assets/img/              Logos (SVG) and the Chapel Street sign photograph
@@ -37,21 +37,23 @@ All Acuity settings live in one block at the top of `assets/js/site.js`:
 var ACUITY = {
   ownerId: 'ACUITY_OWNER_ID',
   types: {
-    consultation: { id: 'ACUITY_TYPE_ID_CONSULTATION', ... },
-    fitting:      { id: 'ACUITY_TYPE_ID_FITTING', ... },
-    collection:   { id: 'ACUITY_TYPE_ID_COLLECTION', ... }
+    commission: { id: 'ACUITY_TYPE_ID_COMMISSION', ... },   // Bespoke Commission, 90 min, in person
+    call:       { id: 'ACUITY_TYPE_ID_CALL', ... }          // Introductory Call, 20 min, by phone
   },
   ...
 };
 ```
 
-1. In Acuity, create three appointment types: **Initial consultation (90 min)**,
-   **Fitting (45 min)**, **Collection (30 min)**.
+1. In Acuity, create two appointment types: **Bespoke Commission (90 min)** and
+   **Introductory Call (20 min)**. Say "by phone" in the call's name or description and make a
+   phone-number field required, so nobody waits for a video link. Bookable hours Mon–Fri
+   10am–5pm; minimum notice 24 hours; cancellation window 24 hours. Fittings and collections
+   are booked by Mark directly, not online.
 2. **Owner ID:** Acuity → *Business Settings → Scheduling Page* → copy your scheduling link.
    The number after `owner=` is the owner ID.
 3. **Appointment type IDs:** Acuity → *Appointment Types* → open each type → *Direct link*.
    The number after `appointmentType=` is that type's ID.
-4. Replace the four placeholder strings, then commit. Nothing else needs changing.
+4. Replace the three placeholder strings, then commit. Nothing else needs changing.
 5. In Acuity's confirmation email template, add what the website promises: the address,
    what to bring, parking.
 
@@ -59,8 +61,7 @@ Until the IDs are added, `/book` shows a "calendar connects once the Acuity acco
 added" note and the embed script is not loaded.
 
 **How it works:**
-- Each appointment type has an anchor on `/book`: `book/#consultation`, `book/#fitting`,
-  `book/#collection`. Links anywhere on the site use these, so each button lands on the right
+- Each appointment type has an anchor on `/book`: `book/#commission` and `book/#call`. Links anywhere on the site use these, so each button lands on the right
   calendar.
 - One iframe is built only when the calendar area comes within 400px of the viewport.
   Acuity's `embed.js` is loaded once at that point.
@@ -69,7 +70,7 @@ added" note and the embed script is not loaded.
   numbers.
 - Below the frame, a fallback link opens the same calendar on Acuity's own site.
 - Acuity's internals can't be styled from this page. Colours inside the calendar are set in
-  Acuity under *Scheduling Page → Appearance*. Use ink `#1b3a2d` and gold `#a98b52` so the
+  Acuity under *Scheduling Page → Appearance*. Use green `#162d20` and gold `#c8a232` so the
   handoff matches.
 
 ## 3. Deploy to GitHub Pages
@@ -106,29 +107,28 @@ ratio, descriptive `aria-label`, and an HTML comment saying what belongs there. 
 (Use `assets/img/...` without `../` on the home page.)
 
 - **Size:** export 4:5 portrait at 1200×1500, JPEG quality ~75–80. Aim for under 150KB each.
-- **Carousel:** the four hero slides are in `index.html`. The first slide is the only image
-  loaded eagerly, so keep it light.
+- **Hero:** the home page has one full-width image behind the headline. Replace
+  `assets/img/chapel-street-sign.jpg` with a landscape shop exterior at least 2400px wide
+  (JPEG, quality ~70, under 300KB) and update its width/height attributes in `index.html`.
 - **The sign photograph** is only 352×440px, from the rendering. It will look soft on
   high-density phone screens. Replace it with a full-resolution shot once the sign is up.
 
 ## 5. Design tokens
 
-At the top of `assets/css/site.css`. Measured contrast on paper `#fbfaf7`:
+At the top of `assets/css/site.css`. Colours come from the logo SVG.
 
-| Token | Value | Ratio | Use |
-|---|---|---|---|
-| `--ink` | `#1b3a2d` | 11.9:1 | headings, dark fields |
-| `--body` | `#33322d` | 12.2:1 | body text |
-| `--muted` | `#6b695f` | 5.3:1 | secondary text (brief's `#7c7a70` measured 4.1:1, under AA) |
-| `--accent` | `#a98b52` | 3.1:1 | rules, ornaments, text ≥ 24px only |
-| `--accent-text` | `#85683a` | 5.0:1 | small gold text (eyebrows, labels) |
-| `--gilt` | `#c8a232` | 5.1:1 on ink | logo gold; dark fields only |
+| Token | Value | Use |
+|---|---|---|
+| `--ink` | `#162d20` | logo green: header, dark fields, headings (14.1:1 on paper) |
+| `--gold` | `#c8a232` | logo gold: brand, buttons and text on green (6.1:1); rules on light backgrounds |
+| `--gold-text` | `#7d6418` | the same gold darkened for small labels on light backgrounds (5.4:1) |
+| `--body` | `#33322d` | body text |
+| `--muted` | `#6b695f` | secondary text |
 
-The logo files use `#162d20` / `#c8a232`. The brief's ink `#1b3a2d` is a touch lighter.
-Both sit together without clashing. To align them exactly, change `--ink` to `#162d20`.
+Logo gold on the off-white background is only 2.3:1, so it is never used for text there.
 
-Type: Playfair Display (display), EB Garamond (body), Inter (labels and buttons), all from
-Google Fonts.
+Type: Jomolhari (the logo's typeface) for everything, regular weight, no italics. Labels and
+buttons use it in spaced capitals.
 
 ## 6. Review mode
 
