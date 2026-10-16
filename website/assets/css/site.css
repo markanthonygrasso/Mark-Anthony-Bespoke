@@ -7,7 +7,8 @@
      --gold #c8a232 on paper is 2.3:1 — never text on light backgrounds; rules and ornaments only.
      on --ink: --paper 14.1:1 · --gold 6.1:1 · --muted-dark 7.2:1 */
 
-/* Jomolhari (SIL Open Font License), Latin subset, self-hosted and preloaded so pages open in it */
+/* Jomolhari (SIL Open Font License), Latin subset with TrueType hinting removed (its hinting
+   renders unevenly on Windows at text sizes). Self-hosted and preloaded so pages open in it. */
 @font-face {
   font-family: "Jomolhari";
   font-style: normal;
