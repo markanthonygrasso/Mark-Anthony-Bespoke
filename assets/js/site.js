@@ -104,13 +104,6 @@ function acuityUrl(typeKey) {
     }, { rootMargin: '200px 0px' }).observe(fig);
   });
 
-  /* ---------- Contact form: thank-you state after submission ---------- */
-  var inquiry = document.querySelector('[data-inquiry]');
-  if (inquiry && /[?&]sent=1(?![0-9])/.test(location.search)) {
-    inquiry.hidden = true;
-    var sent = document.querySelector('[data-form-sent]'); if (sent) sent.hidden = false;
-  }
-
   /* ---------- Scheduler (/book only) ---------- */
   var scheduler = document.querySelector('[data-scheduler]');
   if (!scheduler) return;
