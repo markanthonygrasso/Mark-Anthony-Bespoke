@@ -7,10 +7,10 @@
    Type IDs: Acuity → Appointment Types → each type → Direct link → "appointmentType=" value.
    ------------------------------------------------------------------ */
 var ACUITY = {
-  ownerId: 'ACUITY_OWNER_ID',
+  ownerId: '40643757',
   types: {
-    commission: { id: 'ACUITY_TYPE_ID_COMMISSION', label: 'Bespoke Commission', meta: '90 minutes · 528 Chapel Street' },
-    call:       { id: 'ACUITY_TYPE_ID_CALL',       label: 'Introductory Call',  meta: 'By phone · 20 minutes' }
+    commission: { id: '99766564', label: 'Bespoke Commission', meta: '90 minutes · 528 Chapel Street' },
+    call:       { id: '99464940',       label: 'Introductory Call',  meta: '20 minutes · By phone' }
   },
   embedScript: 'https://embed.acuityscheduling.com/js/embed.js'
 };
@@ -76,6 +76,41 @@ function acuityUrl(typeKey) {
     reveals.forEach(function (el) { el.classList.add('is-in'); });
   }
 
+  /* ---------- Silent loop video: loads only near the viewport; still poster for reduced motion / data saver ---------- */
+  var saveData = navigator.connection && navigator.connection.saveData;
+  document.querySelectorAll('[data-loop]').forEach(function (fig) {
+    var video = fig.querySelector('video');
+    var toggle = fig.querySelector('.loop__toggle');
+    if (!video || reduceMotion || saveData || !('IntersectionObserver' in window)) return; // poster only
+    var loaded = false, userPaused = false;
+    function setPaused(p) {
+      toggle.classList.toggle('is-paused', p);
+      toggle.setAttribute('aria-label', p ? 'Play the background video' : 'Pause the background video');
+    }
+    toggle.hidden = false;
+    toggle.addEventListener('click', function () {
+      userPaused = !video.paused;
+      if (video.paused) video.play(); else video.pause();
+      setPaused(userPaused);
+    });
+    new IntersectionObserver(function (entries) {
+      var visible = entries[0].isIntersecting;
+      if (visible && !loaded) {
+        video.querySelectorAll('source[data-src]').forEach(function (s) { s.src = s.getAttribute('data-src'); });
+        video.load(); loaded = true;
+      }
+      if (visible && !userPaused) { var pr = video.play(); if (pr && pr.catch) pr.catch(function () {}); }
+      else if (!visible) video.pause();
+    }, { rootMargin: '200px 0px' }).observe(fig);
+  });
+
+  /* ---------- Contact form: thank-you state after submission ---------- */
+  var inquiry = document.querySelector('[data-inquiry]');
+  if (inquiry && /[?&]sent=1(?![0-9])/.test(location.search)) {
+    inquiry.hidden = true;
+    var sent = document.querySelector('[data-form-sent]'); if (sent) sent.hidden = false;
+  }
+
   /* ---------- Scheduler (/book only) ---------- */
   var scheduler = document.querySelector('[data-scheduler]');
   if (!scheduler) return;
@@ -91,11 +126,11 @@ function acuityUrl(typeKey) {
 
   function typeFromHash() {
     var h = (location.hash || '').replace('#', '');
-    return ACUITY.types[h] ? h : 'commission';
+    return ACUITY.types[h] ? h : null;   // nothing is pre-selected; a deep link (#commission / #call) selects one
   }
   var active = typeFromHash();
 
-  function frameTitle(t) { return 'Book a ' + t.label + ' with Mark Anthony Bespoke — Acuity Scheduling'; }
+  function frameTitle(t) { return t.label + ' booking calendar, Mark Anthony Bespoke (Acuity Scheduling)'; }
 
   function select(key, fromUser) {
     active = key;
@@ -127,7 +162,7 @@ function acuityUrl(typeKey) {
       }
     });
   });
-  window.addEventListener('hashchange', function () { select(typeFromHash(), false); });
+  window.addEventListener('hashchange', function () { var t = typeFromHash(); if (t) { select(t, false); mount(); } });
 
   function mount() {
     if (iframe) return;
@@ -151,15 +186,5 @@ function acuityUrl(typeKey) {
     }
   }
 
-  select(active, false);
-
-  // Lazy: only build the iframe and load Acuity's script when the frame nears the viewport.
-  if ('IntersectionObserver' in window) {
-    var mo = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) { mount(); mo.disconnect(); }
-    }, { rootMargin: '400px 0px' });
-    mo.observe(frameWrap);
-  } else {
-    mount();
-  }
+  if (active) { select(active, false); mount(); }   // the calendar appears only once an appointment is chosen
 })();
