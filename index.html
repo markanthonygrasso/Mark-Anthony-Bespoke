@@ -9,7 +9,7 @@
 <meta property="og:title" content="Mark Anthony Bespoke | Bespoke tailoring in New Haven">
 <meta property="og:description" content="Bespoke tailoring, crafted entirely by hand. By appointment at 528 Chapel Street, New Haven. Opening November 7th, 2026.">
 <meta property="og:type" content="website">
-<link rel="icon" href="assets/img/monogram-ink.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/jomolhari-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/site.css">
 <script src="assets/js/site.js" defer></script>
@@ -28,12 +28,7 @@
   </div>
   <nav class="menu" id="menu" aria-label="Main" hidden>
     <div class="wrap">
-      <ul class="menu__links"><li><a href="./" aria-current="page">Home</a></li><li><a href="bespoke-experience/">The Bespoke Experience</a></li><li><a href="tailoring/">Tailoring</a></li><li><a href="weddings/">Weddings</a></li><li><a href="book/">Book an appointment</a></li></ul>
-      <div class="menu__meta">
-        <a href="tel:+12033171802">203 317 1802</a>
-        <a href="mailto:mark@markanthonybespoke.com">mark@markanthonybespoke.com</a>
-        <a href="https://www.instagram.com/markanthonybespoke/" rel="noopener" target="_blank">Instagram @markanthonybespoke</a>
-      </div>
+      <ul class="menu__links"><li><a href="./" aria-current="page">Home</a></li><li><a href="bespoke-experience/">The Bespoke Experience</a></li><li><a href="tailoring/">Tailoring</a></li><li><a href="weddings/">Weddings</a></li><li><a href="book/">Book An Appointment</a></li><li><a href="contact/">Contact</a></li></ul>
     </div>
   </nav>
 </header>
@@ -41,23 +36,30 @@
 
 <section class="hero" aria-labelledby="h1" data-review="H-01">
   <div class="hero__media">
-    <!-- PHOTO: Replace with the full-width shop exterior from the shoot (landscape, at least 2400px wide). -->
-    <img src="assets/img/chapel-street-sign.jpg" width="352" height="440" alt="The Mark Anthony Bespoke sign hanging outside 528 Chapel Street" fetchpriority="high">
+    <img src="assets/img/hero-fitting-room.webp" srcset="assets/img/hero-fitting-room-1000.webp 1000w, assets/img/hero-fitting-room.webp 2000w" sizes="100vw" width="2000" height="1333" alt="The fitting room at 528 Chapel Street: a mahogany table, leather chairs and the cabinet of cloth books" fetchpriority="high">
   </div>
   <div class="wrap hero__inner">
-    <h1 id="h1">Bespoke tailoring, kept on Chapel Street.</h1>
+    <h1 id="h1">Bespoke Tailoring, Kept On Chapel Street</h1>
     <p class="lede">Cut from a pattern made for you alone, and crafted entirely by hand. By appointment in Wooster Square. Opening November 7th.</p>
     <div class="btn-row"><a class="btn" href="book/">Book an appointment</a></div>
   </div>
 </section>
 
 <section class="section" aria-labelledby="h-standard" data-review="H-02">
-  <div class="wrap split">
+  <div class="wrap split split--media">
     <div class="reveal">
-      <span class="eyebrow">The Standard</span>
-      <h2 id="h-standard" class="statement">Savile Row tradition, honored in New Haven.</h2>
+      <figure class="loop" data-loop>
+        <!-- VIDEO: 8.8s silent loop shot in the shop (IMG_2028). Poster shows without JS or with reduced motion. -->
+        <video muted loop playsinline preload="none" poster="assets/img/vinyl-poster.webp" width="720" height="900" aria-hidden="true">
+          <source data-src="assets/video/vinyl.webm" type="video/webm">
+          <source data-src="assets/video/vinyl.mp4" type="video/mp4">
+        </video>
+        <button class="loop__toggle" type="button" aria-label="Pause the background video" hidden><span aria-hidden="true"></span></button>
+      </figure>
     </div>
     <div class="prose reveal">
+      <span class="eyebrow">The Standard</span>
+      <h2 id="h-standard" class="statement">Savile Row Tradition, Honored In New Haven</h2>
       <p>Bespoke means the pattern starts with you, not with a size. Your measurements become a pattern of your own. Your cloth isn&rsquo;t cut until your toile, a test garment, has been fitted.</p>
       <p>Every garment we make is made fully by hand. There is no made-to-measure option and no rack of finished suits. The house does one thing, and does it properly.</p>
       <p><a class="link" href="bespoke-experience/">The Bespoke Experience</a></p>
@@ -69,9 +71,9 @@
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">The Process</span>
-      <h2 id="h-process">A minimum of three fittings. Ten to twelve weeks.</h2>
+      <h2 id="h-process">Ten To Twelve Weeks, From First Measure To Final Fitting</h2>
     </div>
-    <ol class="steps steps--row reveal"><li class="step"><p class="step__num">I</p><h3 class="step__title">Consultation</h3><p class="step__body">Conversation, cloth, measurements.</p></li><li class="step"><p class="step__num">II</p><h3 class="step__title">Toile fitting</h3><p class="step__body">Your test garment, fitted and corrected on you.</p></li><li class="step"><p class="step__num">III</p><h3 class="step__title">Making</h3><p class="step__body">Cut from your cloth and made by hand. A suit takes over fifty hours.</p></li><li class="step"><p class="step__num">IV</p><h3 class="step__title">Final fitting</h3><p class="step__body">Your finished garment, on you for the first time.</p></li><li class="step"><p class="step__num">V</p><h3 class="step__title">Collection</h3><p class="step__body">Final refinements made, pressed, and yours.</p></li></ol>
+    <ol class="steps steps--row reveal"><li class="step"><p class="step__num">I</p><h3 class="step__title">Consultation</h3><p class="step__body">Conversation, cloth, measurements.</p></li><li class="step"><p class="step__num">II</p><h3 class="step__title">Toile Fitting</h3><p class="step__body">Your test garment, fitted and corrected on you.</p></li><li class="step"><p class="step__num">III</p><h3 class="step__title">Making</h3><p class="step__body">Cut from your cloth and made by hand. A suit takes over fifty hours.</p></li><li class="step"><p class="step__num">IV</p><h3 class="step__title">Final Fitting</h3><p class="step__body">Your finished garment, on you for the first time.</p></li><li class="step"><p class="step__num">V</p><h3 class="step__title">Collection</h3><p class="step__body">Final refinements made, pressed, and yours.</p></li></ol>
     <p style="margin-top:var(--space-4)"><a class="link" href="bespoke-experience/#process">The full process</a></p>
   </div>
 </section>
@@ -80,9 +82,9 @@
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Tailoring</span>
-      <h2 id="h-make">What we make.</h2>
+      <h2 id="h-make">What We Make</h2>
     </div>
-    <div class="cards cards--5 cards--tiles"><article class="card reveal"><div class="ratio ratio--4x5"><div class="ph" role="img" aria-label="Suits"><!-- PHOTO: Suits — 4:5 portrait from the shop shoot. --><span><img src="assets/img/monogram-ink.svg" alt="" width="52" height="33">Photograph to come</span></div></div><h3>Suits</h3></article><article class="card reveal"><div class="ratio ratio--4x5"><div class="ph" role="img" aria-label="Sport Coats"><!-- PHOTO: Sport Coats — 4:5 portrait from the shop shoot. --><span><img src="assets/img/monogram-ink.svg" alt="" width="52" height="33">Photograph to come</span></div></div><h3>Sport Coats</h3></article><article class="card reveal"><div class="ratio ratio--4x5"><div class="ph" role="img" aria-label="Trousers"><!-- PHOTO: Trousers — 4:5 portrait from the shop shoot. --><span><img src="assets/img/monogram-ink.svg" alt="" width="52" height="33">Photograph to come</span></div></div><h3>Trousers</h3></article><article class="card reveal"><div class="ratio ratio--4x5"><div class="ph" role="img" aria-label="Shirts"><!-- PHOTO: Shirts — 4:5 portrait from the shop shoot. --><span><img src="assets/img/monogram-ink.svg" alt="" width="52" height="33">Photograph to come</span></div></div><h3>Shirts</h3></article><article class="card reveal"><div class="ratio ratio--4x5"><div class="ph" role="img" aria-label="Overcoats"><!-- PHOTO: Overcoats — 4:5 portrait from the shop shoot. --><span><img src="assets/img/monogram-ink.svg" alt="" width="52" height="33">Photograph to come</span></div></div><h3>Overcoats</h3></article></div>
+    <div class="cards cards--5 cards--tiles"><article class="card reveal"><div class="ratio ratio--4x5"><img src="assets/img/cloth-holland-sherry.webp" width="800" height="1000" alt="Holland & Sherry cloth books on the shelf at 528 Chapel Street" loading="lazy" decoding="async"></div><h3>Suits</h3></article><article class="card reveal"><div class="ratio ratio--4x5"><img src="assets/img/cloth-loro-piana.webp" width="800" height="1000" alt="Loro Piana cloth books under a downlight" loading="lazy" decoding="async"></div><h3>Sport Coats</h3></article><article class="card reveal"><div class="ratio ratio--4x5"><img src="assets/img/cloth-dugdale-cabinet.webp" width="800" height="1000" alt="Dugdale cloth bunches in the fitting room cabinet" loading="lazy" decoding="async"></div><h3>Trousers</h3></article><article class="card reveal"><div class="ratio ratio--4x5"><img src="assets/img/cloth-fox-since-1772.webp" width="800" height="1000" alt="Fox Brothers cloth book, Since 1772" loading="lazy" decoding="async"></div><h3>Shirts</h3></article><article class="card reveal"><div class="ratio ratio--4x5"><img src="assets/img/cloth-fox-flannel.webp" width="800" height="1000" alt="Fox Brothers flannel bunches" loading="lazy" decoding="async"></div><h3>Overcoats</h3></article></div>
     <p style="margin-top:var(--space-4)" class="reveal"><a class="link" href="tailoring/">View all tailoring</a></p>
   </div>
 </section>
@@ -91,9 +93,9 @@
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Appointments</span>
-      <h2 id="h-appts">Two ways to begin.</h2>
+      <h2 id="h-appts">Two Ways To Begin</h2>
     </div>
-    <div class="appts"><article class="appt reveal"><p class="appt__dur">90 minutes &middot; 528 Chapel Street</p><h3>Bespoke Commission</h3><p>Entry into the world of bespoke. The initial appointment where we&rsquo;ll select cloth, design your garments, and take measurements. Pricing is tailored to your commission.</p><a class="btn" href="book/#commission">Book a commission</a></article><article class="appt reveal"><p class="appt__dur">By phone &middot; 20 minutes</p><h3>Introductory Call</h3><p>A brief call about the occasion, the garments you have in mind, and your timeline, plus a walkthrough of the bespoke process. Ideal if you&rsquo;re new to bespoke. Mark will call you on the number you give when booking.</p><a class="btn btn--ghost" href="book/#call">Book a call</a></article></div>
+    <div class="appts"><article class="appt reveal"><p class="appt__dur">90 minutes &middot; 528 Chapel Street</p><h3>Bespoke Commission</h3><p>Entry into the world of bespoke. The initial appointment where we&rsquo;ll select cloth, design your garments, and take measurements. Pricing is tailored to your commission.</p><a class="btn btn--ghost" href="book/#commission">Book a commission</a></article><article class="appt reveal"><p class="appt__dur">20 minutes &middot; By phone</p><h3>Introductory Call</h3><p>A brief call about the occasion, the garments you have in mind, and your timeline, plus a walkthrough of the bespoke process. Ideal if you&rsquo;re new to bespoke. Mark will call you on the number you give when booking.</p><a class="btn btn--ghost" href="book/#call">Book a call</a></article></div>
   </div>
 </section>
 
@@ -102,7 +104,7 @@
 <section class="closing on-ink" aria-labelledby="closing-h" data-review="S-03">
   <div class="wrap">
     <img src="assets/img/monogram.svg" alt="" width="72" height="46">
-    <h2 id="closing-h">Begin with a conversation.</h2>
+    <h2 id="closing-h">Begin With A Conversation</h2>
     <div class="btn-row"><a class="btn" href="book/">Book an appointment</a></div>
   </div>
 </section>
@@ -114,7 +116,7 @@
       <div>
         <p class="footer-h">The house</p>
         <address>528 Chapel Street<br>New Haven, CT 06511</address>
-        <p>By appointment<br>Monday to Friday, 10am to 5pm</p>
+        <p>By appointment</p>
       </div>
       <div>
         <p class="footer-h">Contact</p>
@@ -126,7 +128,7 @@
       </div>
       <div>
         <p class="footer-h">Pages</p>
-        <ul><li><a href="./">Home</a></li><li><a href="bespoke-experience/">The Bespoke Experience</a></li><li><a href="tailoring/">Tailoring</a></li><li><a href="weddings/">Weddings</a></li><li><a href="book/">Book an appointment</a></li></ul>
+        <ul><li><a href="./">Home</a></li><li><a href="bespoke-experience/">The Bespoke Experience</a></li><li><a href="tailoring/">Tailoring</a></li><li><a href="weddings/">Weddings</a></li><li><a href="faq/">FAQ</a></li><li><a href="book/">Book An Appointment</a></li><li><a href="contact/">Contact</a></li></ul>
       </div>
     </div>
     <div class="footer-base"><span>&copy; 2026 Mark Anthony Bespoke LLC</span><span>Homage to Savile Row &middot; New Haven</span></div>
