@@ -463,3 +463,12 @@ a.appt:hover { background: var(--paper-2); }
 .form-sent { border-left: 1px solid var(--gold); padding: .25rem 0 .25rem 1.5rem; }
 .form-sent p { margin-top: .5rem; }
 .contact-direct p + p { margin-top: 1rem; }
+
+/* Anything marked hidden stays hidden, whatever layout rule it also has */
+[hidden] { display: none !important; }
+
+/* Inquiry confirmation page */
+.thanks { padding-block: var(--space-6); text-align: center; }
+.thanks img { margin: 0 auto var(--space-3); width: 4.5rem; }
+.thanks .lede { margin: var(--space-3) auto 0; }
+.thanks .btn-row { justify-content: center; }
